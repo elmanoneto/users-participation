@@ -1,38 +1,29 @@
 
-import "reflect-metadata"
-import typeorm, { getConnectionManager, ConnectionManager, Connection } from 'typeorm'
+import mongoose from 'mongoose'
 
 class DataBase {
-    private connection: ConnectionManager
 
-    constructor () {
-        this.connection = new ConnectionManager()
-        this.connect()
-        this.getConnection()
-    }
+    private DB_URI: string = 'mongodb://localhost:27017/users'
 
-    private async connect() {
+    constructor () {}
+
+    public async connect () {
         try {
-            const connection = await this.connection
-            .create({
-                name: 'users-participation',
-                type: 'mongodb',
-                host: 'localhost',
-                port: 27017,
-                database: 'users',
-                logging: true,
+            await mongoose.connect(this.DB_URI, {
+                useNewUrlParser: true,
                 useUnifiedTopology: true
             })
-            .connect()
-
-            return connection
         } catch (error) {
-            console.log(`Cannot connect: ${error}`)
+            console.log(error)
         }
     }
 
-    private getConnection () {
-        console.log(this.connection.has('users-participation'))
+    public async close () {
+        try {
+            await mongoose.disconnect()
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 
