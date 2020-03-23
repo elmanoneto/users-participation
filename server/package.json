@@ -1,0 +1,10 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "TypeScript node project",
+  "main": "index.ts",
+  "repository": "https://github.com/elmanoneto/users-participation",
+  "author": "Elmano Neto",
+  "license": "MIT",
+  "private": false
+}
