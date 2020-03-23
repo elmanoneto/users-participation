@@ -19,7 +19,7 @@ class DataBase {
                 type: 'mongodb',
                 host: 'localhost',
                 port: 27017,
-                database: "admin",
+                database: 'users',
                 logging: true,
                 useUnifiedTopology: true
             })
@@ -34,7 +34,6 @@ class DataBase {
     private getConnection () {
         console.log(this.connection.has('users-participation'))
     }
-
 }
 
 export default DataBase

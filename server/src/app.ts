@@ -7,7 +7,7 @@ import DataBase from './config/database'
 
 class App {
     public app: express.Application
-    private database: DataBase
+    public database: DataBase
 
     constructor() {
         this.app = express()
