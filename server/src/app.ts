@@ -6,7 +6,6 @@ import cors from 'cors'
 import DataBase from './config/database'
 import userRouter from './modules/users/routes'
 
-
 class App {
     public app: express.Application
     public database: DataBase
