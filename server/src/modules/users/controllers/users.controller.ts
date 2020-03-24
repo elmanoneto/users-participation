@@ -10,17 +10,18 @@ class UsersController {
             const users = await UserModel.collection.find({}).toArray()
             res.json({ status: 200, data: users })
         } catch (error) {
-            res.json({ status: 500, data: error.message })
+            res.status(422).send({ status: 422, data: error.message })
         }
     }
 
     async create(req: Request, res: Response) {
         try {
             const UserModel: IUSer = new User(req.body)
-            UserModel.save()
+            await UserModel.validateSync()
+            await UserModel.save()
             res.json({ status: 200, data: UserModel.toJSON() })
         } catch (error) {
-            res.json({ status: 500, data: error.message })
+            res.status(422).send({ status: 422, data: error.message })
         }
     }
 
