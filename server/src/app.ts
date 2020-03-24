@@ -1,5 +1,4 @@
-import express, { Request, Response } from 'express'
-import { createConnection } from 'typeorm'
+import express from 'express'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import cors from 'cors'
@@ -22,8 +21,11 @@ class App {
     }
 
     private middlewares() {
-        this.app.use(cors())
         this.app.use(bodyParser.json())
+        this.app.use(bodyParser.urlencoded({
+            extended: true
+        }))
+        this.app.use(cors())
         this.app.use(morgan('dev'))
     }
 
