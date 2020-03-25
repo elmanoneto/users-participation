@@ -7,7 +7,7 @@ const App: React.FC = () => {
     return (
         <Fragment>
             <GlobalStyle></GlobalStyle>
-            <Header></Header>
+            <Header />
         </Fragment>
     )
 }
