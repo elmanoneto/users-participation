@@ -28,7 +28,7 @@ const Header: React.FC = () => {
         }
     }
 
-    const renderModal = (modal: boolean, alertMsg: string) => {
+    const renderModal = (alertMsg: string) => {
         setShowModal(false)
         return console.log(alertMsg)
     }
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
                 <button type="submit" onClick={() => submit({firstName, lastName, participation} as User)}>SEND</button>
             </div>
             
-            { showModal && renderModal(showModal, alertMsg) }
+            { showModal && renderModal(alertMsg) }
         </Wrapper>
     )
 }
