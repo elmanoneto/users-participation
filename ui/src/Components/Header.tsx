@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { http } from '../config/http'
 
 interface User {
+    _id: string,
     firstName: string,
     lastName: string,
     participation: number
@@ -21,8 +22,12 @@ const Header: React.FC = () => {
             await http.post('/users', user)
             setAlertMsg('User participant saved!')
             setShowModal(true)
+            window.location.reload();
         } catch (error) {
-            const err = { code: error?.response?.data?.code ?? 500, message: error?.response?.data?.error?.name ?? 'Connection Refused' }
+            const err = { 
+                code: error?.response?.data?.code ?? 500, 
+                message: error?.response?.data?.error?.name ?? 'Connection Refused'
+            }
             setAlertMsg(err)
             setShowModal(true)
         }

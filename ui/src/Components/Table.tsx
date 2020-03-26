@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface User {
+    _id: string,
     firstName: string,
     lastName: string,
     participation: number
@@ -14,13 +15,13 @@ interface TableProps {
 const Table = (data: TableProps) => {
 
     const render = () => {
-        return data.users.map(user => {
+        return data.users.map((user, i) => {
             return (
-                <tr>
-                    <td></td>
+                <tr key={user._id}>
+                    <td>{i+1}</td>
                     <td>{user.firstName}</td>
                     <td>{user.lastName}</td>
-                    <td className="participation">{user.participation}</td>
+                    <td className="participation">{user.participation}%</td>
                 </tr>
             )
         })
@@ -55,7 +56,6 @@ const Wrapper = styled.section`
     .participation {
         text-align: center;
     }
-
 `
 
 export default Table

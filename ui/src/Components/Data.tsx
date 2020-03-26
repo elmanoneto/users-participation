@@ -3,8 +3,10 @@ import styled from 'styled-components'
 
 import { http } from '../config/http'
 import Table from './Table'
+import Chart from './Chart'
 
 interface User {
+    _id: string,
     firstName: string,
     lastName: string,
     participation: number
@@ -36,9 +38,11 @@ const Data: React.FC = () => {
             </Wrapper>
             <Wrapper>
                 <div className="data">
-                    <div className="item">oi</div>
                     <div className="item">
-                        {users.length && <Table users={users}></Table>}
+                        {!!users.length && <Chart users={users}></Chart>}
+                    </div>
+                    <div className="item">
+                        {!!users.length && <Table users={users}></Table>}
                     </div>
                 </div>
             </Wrapper>
@@ -71,7 +75,7 @@ const Wrapper = styled.section`
             display: flex;
             flex: 1;
             min-width: 50%;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
         }
     }
