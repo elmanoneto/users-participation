@@ -16,6 +16,8 @@ describe('User model', () => {
     })
 
     it('Should throw validation errors', async done => {
+        expect.assertions(1)
+
         const UserModel: IUSer = new User()
 
         expect(UserModel.validate).toThrow()
@@ -40,6 +42,18 @@ describe('User model', () => {
         })
 
         expect(UserModel.participation).toBe(10)
+
+        done()
+    })
+
+    it('Should fetch users from database', async done => {
+        expect.assertions(1)
+
+        const UserModel: IUSer = new User()
+
+        const users = await UserModel.collection.find({}).toArray()
+
+        expect(users).toBeInstanceOf(Array)
 
         done()
     })
