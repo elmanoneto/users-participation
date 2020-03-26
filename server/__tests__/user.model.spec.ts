@@ -26,7 +26,7 @@ describe('User model', () => {
     it('Should save user to database', async done => {
         expect.assertions(3)
 
-        const UserModel: IUSer = await new User({ firstName: 'John', lastName: 'Snow', participation: 10 })
+        const UserModel: IUSer = new User({ firstName: 'John', lastName: 'Snow', participation: 10 })
 
         const spy = jest.spyOn(UserModel, 'save')
         UserModel.save()
