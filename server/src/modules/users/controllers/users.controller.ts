@@ -8,7 +8,7 @@ class UsersController {
         try {
             const UserModel: IUSer = new User()
             const users = await UserModel.collection.find({}).toArray()
-            res.json({ status: 200, data: users })
+            res.json(users)
         } catch (error) {
             res.status(422).send({ status: 422, data: error.message })
         }
@@ -17,11 +17,11 @@ class UsersController {
     async create(req: Request, res: Response) {
         try {
             const UserModel: IUSer = new User(req.body)
-            await UserModel.validateSync()
+            UserModel.validateSync()
             await UserModel.save()
             res.json({ status: 200, data: UserModel.toJSON() })
         } catch (error) {
-            res.status(422).send({ status: 422, data: error.message })
+           res.status(400).send({ code: 400, error: error })
         }
     }
 

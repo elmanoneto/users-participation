@@ -10,13 +10,13 @@ describe('User model', () => {
     })
 
     afterAll(async () => {
-        const UserModel = await new User()
+        const UserModel = new User()
         await UserModel.collection.drop()
         mongoose.connection.close()
     })
 
     it('Should throw validation errors', async done => {
-        const UserModel: IUSer = await new User()
+        const UserModel: IUSer = new User()
 
         expect(UserModel.validate).toThrow()
 

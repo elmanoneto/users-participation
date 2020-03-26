@@ -8,13 +8,14 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "server": "ts-node-dev --watch --respawn --transpileOnly src/index.ts",
-    "test": "jest --detectOpenHandles --colors"
+    "server": "ts-node-dev --watch --respawn -yar-transpileOnly src/index.ts",
+    "test": "jest --config jest.config.js"
   },
   "devDependencies": {
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.3",
     "@types/morgan": "^1.9.0",
+    "jest": "^25.2.2",
     "ts-jest": "^25.2.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
